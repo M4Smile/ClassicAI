@@ -1,0 +1,110 @@
+@font-face {
+  font-family: 'DRUZHOK';
+  src: url('./fonts/DRUZHOK-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Classical Login Styles */
+.classical-login-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(ellipse at top right, #e2a86b 0%, #1a120d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.classical-login-container {
+  background: #593e28;
+  border-radius: 40px;
+  box-shadow: 0 8px 40px 0 rgba(0,0,0,0.35);
+  padding: 40px 36px 32px 36px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.classical-login-title {
+  font-family: 'DRUZHOK';
+  font-size: 2.2rem;
+  color: #FCECC9;
+  letter-spacing: 0.15em;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.classical-login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.classical-login-input {
+  background: transparent;
+  border: 1.5px solid #f5e6c7;
+  border-radius: 20px;
+  padding: 12px 18px;
+  color: #ffffff !important;
+  font-size: 1.05rem;
+  font-family: 'DRUZHOK';
+  outline: none;
+  margin-bottom: 0px;
+  transition: border 0.2s;
+}
+.classical-login-input:focus {
+  border: 1.5px solid #e2a86b;
+  
+}
+
+.classical-login-forgot {
+  color: #FFFFC7;
+  font-size: 0.95rem;
+  font-family: 'DRUZHOK';
+  margin-bottom: 2px;
+  margin-left: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.classical-login-btn {
+  background: #f5e6c7;
+  color: #000000;
+  font-family: 'DRUZHOK';
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 0;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+}
+.classical-login-btn:hover {
+  background: #e2a86b;
+  color: #fff;
+}
+
+.classical-login-register {
+  background: #2b1f14;
+  color: #f5e6c7;
+  font-family: 'DRUZHOK';
+  font-size: 1.05rem;
+  border: 1.5px solid #f5e6c7; /* Обводка вместо outline */
+  border-radius: 20px;
+  padding: 10px 0 6px 0;
+  letter-spacing: 0.09em;
+  cursor: pointer;
+  margin-top: 2px;
+  transition: color 0.2s, border-color 0.2s; /* Добавляем плавный переход для обводки */
+}
+
+.classical-login-register:hover {
+  color: #FFFFC7;
+  border-color: #FFFFC7; /* Меняем цвет обводки при наведении */
+}

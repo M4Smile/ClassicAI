@@ -1,0 +1,15 @@
+fastapi
+google-genai
+sqlalchemy
+pydantic
+requests
+PyJWT
+passlib
+bcrypt
+mysql-connector-python
+aiohttp
+email-validator
+uvicorn
+python-multipart
+yandex_cloud_ml_sdk
+music21

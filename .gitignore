@@ -1,0 +1,38 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python
+__pycache__/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Frontend
+Frontend/node_modules/
+Frontend/build/
+Frontend/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# User uploads and generated media
+audio_files/
+Backend/audio_files/
+audio.mp3
+*.musicxml
+simplified.pdf
+audio2audio.*
+
+# OS and IDE metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

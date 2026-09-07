@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wave Line Animation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="wave"></canvas>
+  <script>
+    const canvas = document.getElementById('wave');
+    const ctx = canvas.getContext('2d');
+  
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+  
+    const amplitude = canvas.height / 32;
+    const frequency = 0.005;
+    const speed = 0.0003;
+    const numLines = 5;
+    const staffSpacing = canvas.height / 30;
+    const staffCenter = canvas.height / 3.5;
+    const firstLineY = staffCenter - ((numLines - 1) / 2) * staffSpacing;
+  
+    const lineDelays = 300; // задержка между линиями (мс)
+    const lineDrawDuration = 1000; // длительность отрисовки одной линии
+  
+    let startTime = null;
+  
+    function drawWave(time, progressArray) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+      for (let line = 0; line < numLines; line++) {
+        const progress = progressArray[line];
+        if (progress <= 0) continue;
+  
+        ctx.beginPath();
+        const yBase = firstLineY + line * staffSpacing;
+        ctx.moveTo(0, yBase);
+  
+        const maxX = canvas.width * Math.min(progress, 1);
+        for (let x = 0; x <= maxX; x += 2) {
+          const y = yBase + Math.sin(x * frequency) * Math.cos(time * speed) * amplitude;
+          ctx.lineTo(x, y);
+        }
+  
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 3;
+        ctx.shadowColor = 'rgba(0,0,0,0)';
+        ctx.shadowBlur = 0;
+        ctx.stroke();
+      }
+    }
+  
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+  
+      const progressArray = [];
+  
+      for (let i = 0; i < numLines; i++) {
+        const delay = i * lineDelays;
+        const localElapsed = elapsed - delay;
+  
+        let progress = localElapsed / lineDrawDuration;
+        if (progress < 0) progress = 0;
+        if (progress > 1) progress = 1;
+  
+        progressArray.push(progress);
+      }
+  
+      drawWave(timestamp, progressArray);
+      requestAnimationFrame(animate);
+    }
+  
+    animate(0);
+  </script>
+</body>
+</html> 
